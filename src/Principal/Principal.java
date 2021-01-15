@@ -35,6 +35,33 @@ public class Principal {
 			System.err.println("No se encontaron registros en base a tu seleccion");
 			break;
 		}
+
+		if (artistaConsultado != null) {
+			System.out.println("======= Registro encontrado ========");
+			System.out.println("Nombre: " + artistaConsultado.getNombre());
+			System.out.println("Tipo de Artista: " + artistaConsultado.getTipoArtista());
+			System.out.println("País: " + artistaConsultado.getPais());
+			System.out.println("ALBUMS: \n");
+
+			artistaConsultado.getAlbums().forEach(album -> {
+				System.out.println("\tALBUM: \t" + album.getNombre());
+				System.out.println("\tAÑO DE LANZAMIENTO: \t" + album.getAnio());
+				System.out.println("\tCOPIAS VENDIDAS: \t" + album.getCopiasVendidas());
+				System.out.println();
+
+			});
+		}
+		
+		System.out.println("¿Deseas realizar otra busqueda? Y/N ");
+		String opcionSeleccionada = sn.nextLine();
+		
+		if (opcionSeleccionada.equals("Y") || opcionSeleccionada.equals("y")) {
+			iniciarBusqueda();
+		}
+		
+		sn.close();
+		System.out.println("Gracias por usar nuestro buscador de artistas, te esperamos pronto!");
+		System.exit(0);
 	}
 
 }
